@@ -1,0 +1,37 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { Image } from "astro:assets";
+import "../style.css";
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="cat">
+    <head>
+        <ClientRouter />
+        <meta charset="UTF-8" />
+        <meta name="description" content="Alzina o Roure?" />
+        <meta name="viewport" content="width=device-width" />
+        <meta
+            name="keywords"
+            content="Alzina, Roure, joc, diferencies entre alzina i roure"
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+    </head>
+    <body>
+        <header>
+            <h1>Title: {title}</h1>
+        </header>
+        <main>
+            <slot />
+        </main>
+        <footer>
+            <p>Footer</p>
+        </footer>
+    </body>
+</html>
