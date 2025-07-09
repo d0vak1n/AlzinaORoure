@@ -1,7 +1,8 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import { Image } from "astro:assets";
-import "../style.css";
+import "../styles/global.css";
+
 interface Props {
     title: string;
 }
@@ -21,17 +22,34 @@ const { title } = Astro.props;
             content="Alzina, Roure, joc, diferencies entre alzina i roure"
         />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link href="/src/styles/global.css" rel="stylesheet" />
         <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
     </head>
     <body>
         <header>
-            <h1>Title: {title}</h1>
+            <div class="flex flex-col items-center m-8 align-middle">
+                <h1 class="text-5xl">{title}</h1>
+            </div>
         </header>
         <main>
-            <slot />
+            <div class="flex flex-col items-center m-8 align-middle">
+                <slot />
+            </div>
         </main>
         <footer>
-            <p>Footer</p>
+            <div class="flex justify-center mb-6 mt-4">
+                RaMoWeb © {new Date().getFullYear()}
+            </div>
         </footer>
     </body>
 </html>
+
+<style is:global>
+    html {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+            "Liberation Mono", "Courier New", monospace;
+        background-color: #000;
+        color: #fff;
+    }
+</style>
